@@ -9,8 +9,9 @@ test('Verify redirection to ESG KPI Engine', async ({ page, homePage }) => {
         ).toBeVisible()
     })
     await test.step('When user navigated through menu to esg-kpi-engine', async () => {
+        await homePage.openMobileBookmarks()
         await homePage.expandBookmark('Products')
-        await homePage.selectRowInExpandedBookmark('Finance & ESG')
+        await homePage.selectMobileRowInExpandedBookmark('Finance & ESG')
         await homePage.selectMenu('ESG KPI Engine')
     })
     await test.step('Then user should be redirected to correct url', async () => {
