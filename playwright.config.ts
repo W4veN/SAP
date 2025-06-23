@@ -13,7 +13,7 @@ require('dotenv').config()
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-export default defineConfig({
+module.exports = defineConfig({
     name: 'Interview Tests',
     testDir: './tests',
     /* Run tests in files in parallel */
@@ -26,6 +26,8 @@ export default defineConfig({
     workers: process.env.CI ? 1 : undefined,
     /* Reporter to use. See https://playwright.dev/docs/test-reporters */
     reporter: 'html',
+    testMatch: '*.spec.ts',
+
     /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
     use: {
         /* Base URL to use in actions like `await page.goto('/')`. */
@@ -40,16 +42,21 @@ export default defineConfig({
     projects: [
         {
             name: 'Desktop e2e',
-            use: { ...devices['Desktop Chrome'] },
             testMatch: '/*/desktop/*.spec.ts',
-        },
-        {
-            name: 'Mobile e2e',
             use: {
-                ...devices['Pixel 7'],
-                viewport: { width: 412, height: 915 },
+                ...devices['Desktop Chrome'],
+                viewport: { width: 1440, height: 900 },
+                isMobile: false,
             },
-            testMatch: '/*/mobile/*.spec.ts',
         },
+        // {
+        //     name: 'Mobile e2e',
+        //     testMatch: '/*/mobile/*.spec.ts',
+        //     use: {
+        //         ...devices['Pixel 7'],
+        //         viewport: { width: 412, height: 915 },
+        //         isMobile: true
+        //     },
+        // },
     ],
 })
