@@ -1,11 +1,10 @@
-import { test, expect } from '@playwright/test'
-import { HomePage } from '../../pages/home-page'
-test('End-to-end solutions for financial services section', async ({
+import { expect } from '@playwright/test'
+import { test } from '../../utils/fixtures'
+test('Verify End-to-end solutions for financial services section', async ({
     page,
+    homePage,
 }) => {
     await page.goto('/')
-
-    const homePage = new HomePage(page)
     await expect(
         homePage.financialServicesArticleSection,
         'Check if financial services section is visible'
