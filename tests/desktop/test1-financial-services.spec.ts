@@ -4,15 +4,18 @@ test('Verify End-to-end solutions for financial services section', async ({
     page,
     homePage,
 }) => {
-    await page.goto('/')
-    await expect(
-        homePage.financialServicesArticleSection,
-        'Check if financial services section is visible'
-    ).toBeVisible()
-    await expect(
-        homePage.financialServicesArticleSection,
-        'Financial Services section should contain proper data'
-    ).toMatchAriaSnapshot(`- article:
+    await test.step('Given Home Page is opened', async () => {
+        await page.goto('/')
+    })
+    await test.step('End-to-end solutions for financial services section should be visible and the section should contain correct data', async () => {
+        await expect(
+            homePage.financialServicesArticleSection,
+            'Check if financial services section is visible'
+        ).toBeVisible()
+        await expect(
+            homePage.financialServicesArticleSection,
+            'Financial Services section should contain proper data'
+        ).toMatchAriaSnapshot(`- article:
   - heading "End-to-end solutions for financial services" [level=2]
   - link "Learn more":
     - /url: https://www.sapfioneer.com/banking/
@@ -32,5 +35,6 @@ test('Verify End-to-end solutions for financial services section', async ({
     - heading "Finance & ESG" [level=3]
     - paragraph: Establish a single source of truth for profitability and turn compliance into your advantage using our integrated finance & ESG platform.
     - text: Learn more `)
+    })
     await page.close()
 })
