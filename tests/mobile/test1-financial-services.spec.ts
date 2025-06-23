@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
-import { HomePage } from '../../pages/home-page'
-test('End-to-end solutions for financial services section', async ({
+import { HomePage } from '../../pages/home.page'
+test('Verify End-to-end solutions for financial services section', async ({
     page,
 }) => {
     await page.goto('/')
