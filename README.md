@@ -18,28 +18,14 @@ npx playwright test tests/desktop/test1-financial-services.spec.ts
 
 npx playwright show-report
 
-# Directories
-
-.
-├── tests/
-│ └── desktop/
-| └── test1-financial-services.spec.ts
-| └── test2-engine.spec.ts
-| └── test3-contact-form.spec
-| └── mobile/
-| └── test1-financial-services.spec.ts
-| └── test2-engine.spec.ts
-| └── test3-contact-form.spec
-├── playwright.config.ts
-├── package.json
-
 # Next Steps
 
 1. Move to better reporter like Allure
-2. Improve the ci/cd to install only needed browsers / cache them
-3. Install playwright eslint rules
-4. Improve assertion for 1 test to be more specific
-5. Add bdd support
+2. Improve mobile and desktop locators, so functions would be shared
+3. Improve the ci/cd to install only needed browsers / cache them
+4. Install playwright eslint rules
+5. Improve assertion for 1 test to be more specific
+6. Add bdd support
 
 # Tests
 

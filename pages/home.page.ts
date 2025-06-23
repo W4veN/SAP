@@ -12,6 +12,7 @@ export class HomePage {
     readonly financialServicesContainer: Locator
     readonly navigation: Locator
     readonly getInTouchButton: Locator
+    readonly openMobileBookmarksButton: Locator
 
     constructor(page: Page) {
         this.page = page
@@ -29,6 +30,12 @@ export class HomePage {
             .getByRole('link', { name: 'Get in touch' })
             .first()
             .describe('Get In Touch Button')
+        this.openMobileBookmarksButton = page
+            .getByRole('button', { name: 'Open menu' })
+            .describe('Open Bookmarks Button')
+    }
+    async openMobileBookmarks() {
+        await this.openMobileBookmarksButton.click()
     }
     async expandBookmark(bookmarkName: Bookmarks) {
         await this.navigation
@@ -43,6 +50,9 @@ export class HomePage {
             .locator('h3')
             .filter({ hasText: rowName })
             .click()
+    }
+    async selectMobileRowInExpandedBookmark(rowName: RowsInExpandedBookmark) {
+        await this.page.getByRole('button').filter({ hasText: rowName }).click()
     }
     async selectMenu(itemName: string) {
         await this.page.getByRole('listitem').getByLabel(itemName).click()
