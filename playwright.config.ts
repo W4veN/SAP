@@ -32,7 +32,7 @@ module.exports = defineConfig({
     use: {
         /* Base URL to use in actions like `await page.goto('/')`. */
         baseURL: 'https://www.sapfioneer.com/',
-        headless: false,
+        headless: true,
         /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
         trace: 'on-first-retry',
         actionTimeout: 10000,
@@ -49,14 +49,14 @@ module.exports = defineConfig({
                 isMobile: false,
             },
         },
-        // {
-        //     name: 'Mobile e2e',
-        //     testMatch: '/*/mobile/*.spec.ts',
-        //     use: {
-        //         ...devices['Pixel 7'],
-        //         viewport: { width: 412, height: 915 },
-        //         isMobile: true
-        //     },
-        // },
+        {
+            name: 'Mobile e2e',
+            testMatch: '/*/mobile/*.spec.ts',
+            use: {
+                ...devices['Pixel 7'],
+                viewport: { width: 412, height: 915 },
+                isMobile: true,
+            },
+        },
     ],
 })
